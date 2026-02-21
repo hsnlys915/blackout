@@ -19,6 +19,12 @@ Decrease:
     - Assumption: Internet blackout cut out channel of mobilization through social media
     - Internet blackout -> Restricted mobilization -> Less participation -> Lowers probability of success in violent contention -> Less escalation
 
+
+### Scope
+Tunisia 2010 (Q4) - 2011 (Q1)
+
+(Maybe Egypt in case Tunisian context is not applicable - e.g., VPN, proxy etc.)
+
 ### Unit of Analysis
 TBD (1st administrative unit-day/week or 2nd administrative unit-day/week)
 - No year level; Maginot line is month
@@ -70,6 +76,18 @@ Conflict Escalation: Defined in three different ways
                 - Spatial Durbin Model: Generalized Spatial model that covers all models above
             2) Spatial models can be extended to panel data using FEs. There are computationally heavier options which are trickier than former using bayesian framework.
             3) In most cases, where the dependencies are weak, using TWFE themselves is acceptable.
+            
+    - Also I want to ask whether we want to check Adm-1 - expanding conflict escalation (e.g, Seoul protest -> To Busan Riot)
+        - A:
+            - If we want to differentiate spatial units, it does not matter: it is not our escalation incidence of interest.
+            - Considering it as spillover, we can make a good use of spatial models: by using different distances or orders to determine which units are neighboring units, it can be absorbed in spatial weights we add in spatial models.
+
+    - How should we code if there are MULTIPLE outcomes in one adm-1, especially for protest to protest? e.g., some protest dereased in size, some protest increaseced in size.
+        - A: 
+            - By defining escalation as such - whether the administrative unit *i* had encountered increase in the number of participants at protest event in time *t* from prior protest event in time *t-1*, we see it as escalation incidence occurred in unit *it*, henceforth code it as 1 - we can make things simpler.
+            - Or, by making uoa campaign-adm1-day/or week, we can separate escalation and de-escalation within singular protest campaigns (which would require separate theorization for de-escalation dynamic in this case).
+
+            
     - Also, how can we deal with adm-1s w/o ANY protests?
         - A:
             - Two options to consider:
@@ -86,32 +104,29 @@ Internet Penetration
 *
 Internet Blackout
 - To CHK: Wouldn't internet blackout be potentially endogenous to the level of internet penetration? If so, assumptions for DiD (i.e. parallel trends assumptions) might get violated. In that case, we will benefit from framing the study as estimating conditional effect rather than as DiD that strictly infer causality. Or is there any potential reasons that we can justify treating internet blackout exogeneous to escalation risk that varies locally by the level of internet penetration for our cases? 
+CHK: Agreed. Might need another variable that works. Will look into this in the future.
 
 ### Covariate
 GDPPC
 Population
 Distance from capital?
 
-
-### Scope
-Tunisia 2010 (Q4) - 2011 (Q1)
-
-(Maybe Egypt in case Tunisian context is not applicable - e.g., VPN, proxy etc.)
-
 ### Method
 TBD (DiD or DiDiD) w/ twfe
 
+### Analysis
+#### Identification
+Pre-trend test (right before blackout, no difference between high and low internet adm-1)
+
+#### Estimation
 Tentative code: felm(escalation ~ Internet_penetration * Internet_shutdown + covariate | adm-1+year, data=data)
 
 ### Additional (Robustness) check
 Observable implication
- - What is our alternative outcome instead of conflict escalation?
- - What is the condition at which our theory does not work?
- - What is the assumption are we making?
- 
+- What is our alternative outcome instead of conflict escalation?
+- What is the condition at which our theory does not work?
+- What is the assumption are we making?
 Placebo test (Lagging / adjusting internet blackout timing)
-
-Pre-trend test (right before blackout, no difference between high and low internet adm-1)
 
 To YSL: Additional Robustness check?
 
