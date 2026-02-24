@@ -1,0 +1,29 @@
+R package MELTT for integration of conflict event data: ACLED, SCAD, GTD, UCDP-GED
+
+Key variables from each dataset:
+
+1) Date
+
+2) Enddate (for episodic or campaign data)
+
+3) lon&lat coordinates
+
+4) taxonomy variables (actor, event, geoprecision)
+
+- Taxonomies needs to be developed separately to make use of MELLT
+
+Protocol
+
+1) Specify spatial and temporal window
+
+- In our case: Tunisia and Egypt 2010 Q4 to 2011 Q1
+
+2) Load dataset with key variables intact
+
+3) Execute Matching: For original article, they identified events within 3km and 1 day are same event
+
+4) Data inspection: Ephasis on event-to-episode matches
+
+5) Visualization
+
+6) Validation

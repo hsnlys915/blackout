@@ -86,6 +86,7 @@ Conflict Escalation: Defined in three different ways
         - A: 
             - By defining escalation as such - whether the administrative unit *i* had encountered increase in the number of participants at protest event in time *t* from prior protest event in time *t-1*, we see it as escalation incidence occurred in unit *it*, henceforth code it as 1 - we can make things simpler.
             - Or, by making uoa campaign-adm1-day/or week, we can separate escalation and de-escalation within singular protest campaigns (which would require separate theorization for de-escalation dynamic in this case).
+            -A: Yeah I think making uoa campain-adm1-day makes more sense. Your first definition might cause inflation in conflict escalation while underrepresenting conflict 'de-escalation'. Need to think about this issue further.
 
             
     - Also, how can we deal with adm-1s w/o ANY protests?
@@ -119,7 +120,7 @@ TBD (DiD or DiDiD) w/ twfe
 Pre-trend test (right before blackout, no difference between high and low internet adm-1)
 
 #### Estimation
-Tentative code: felm(escalation ~ Internet_penetration * Internet_shutdown + covariate | adm-1+year, data=data)
+Tentative code: feols(escalation ~ Internet_penetration * Internet_shutdown + covariate | adm-1+year, data=data)
 
 ### Additional (Robustness) check
 Observable implication
@@ -144,6 +145,22 @@ To YSL: Additional Robustness check?
 1) Check raw data of outcome (Tunisia 2010 Q4 - 2011 Q1)
     - ACLED & SCAD (event to campaign coding eligibility & source credibility)
 2) Review dataset introduced by <strong><a href="https://journals.sagepub.com/doi/10.1177/0022002718777050" target="_blank" rel="noopener">Cunningham 2018</a></strong>
+    - R package MELTT for integration of conflict event data: ACLED, SCAD, GTD, UCDP-GED
+        - Key variables from each dataset:
+            1) Date
+            2) Enddate (for episodic or campaign data)
+            3) lon&lat coordinates
+            4) taxonomy variables (actor, event, geoprecision)
+                - Taxonomies needs to be developed separately to make use of MELLT
+                - For Tunisian Case between 2010 to 2011
+        - Protocol
+            1) Specify spatial and temporal window
+                - In our case: Tunisia 2010 Q4 to 2011 Q1 (and Egypt if possible)
+            2) Load dataset with key variables intact
+            3) Execute Matching: For original article, they identified events within 3km and 1 day are same event
+            4) Data inspection: Ephasis on event-to-episode matches
+            5) Visualization
+            6) Validation
 
 ### April - June 2026
 #### Outcome
